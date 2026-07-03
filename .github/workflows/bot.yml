@@ -1,1 +1,28 @@
+name: Bot Facebook
 
+on:
+  schedule:
+    - cron: '*/30 * * * *'
+  workflow_dispatch:
+
+jobs:
+  bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    
+    steps:
+      - name: Lấy code
+        uses: actions/checkout@v4
+      
+      - name: Cài Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+      
+      - name: Cài thư viện
+        run: npm install
+      
+      - name: Chạy bot
+        run: node index.js
+        env:
+          APPSTATE: ${{ secrets.APPSTATE }}   # 👈 Lấy cookie từ Secret
