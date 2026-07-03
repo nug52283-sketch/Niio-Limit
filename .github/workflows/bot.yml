@@ -25,4 +25,4 @@ jobs:
       - name: Chạy bot
         run: node index.js
         env:
-          APPSTATE: ${{ secrets.APPSTATE }}   # 👈 Lấy cookie từ Secret
+          APPSTATE: ${{ secrets.APPSTATE }}
